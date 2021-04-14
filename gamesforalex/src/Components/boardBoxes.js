@@ -19,12 +19,12 @@ export const BoardBoxes = ({
 
     const boxNums = [0, 1, 2, 3, 4, 5, 6, 7, 8]; 
 
-    const styles = {
-        textAlign: 'center',
-        backgroundColor: 'hsl(206, 50%, 80%)',
-        width: 162,
-        height: 162
-    }
+    // const styles = {
+    //     textAlign: 'center',
+    //     backgroundColor: 'hsl(206, 50%, 80%)',
+    //     width: 162,
+    //     height: 162
+    // }
 
     // useEffect(() => {
     //     let check = checkForWinner();
@@ -71,16 +71,18 @@ export const BoardBoxes = ({
     // }
 
         return (
+            
             <div id="boardcontainer" className="section" style={{boardBoxesComponentState}}>
+                <p>*{player1.name}*</p>
                 <div className="gameboardplayercontainer">
-                    <img id="photo1" className="playerphoto" src={player1.photo} alt="player 1" />
+                    <img id="photo1" className="playerphoto" src={alex.photo} alt="player 1" />
                     <span className="name">{player1}</span>
                 </div>
                 <div id="exterior">
                     <div id="board" >
                         {boxNums.map(i => {
                             return( 
-                                <Box className="box" id={i} style={styles} 
+                                <Box className="box" id={i}  
                                     setTurnCount={setTurnCount} 
                                     boardState={boardState} setBoardState={setBoardState} 
                                     />  
@@ -89,7 +91,7 @@ export const BoardBoxes = ({
                     </div>
                 </div>
                 <div className="gameboardplayercontainer">
-                    <img id="photo2" className="playerphoto" src={player2} alt="player 2"/>
+                    <img id="photo2" className="playerphoto" src={david.photo} alt="player 2"/>
                     <span className="name">{player2}</span>
                 </div>
             </div>

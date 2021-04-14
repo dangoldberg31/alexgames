@@ -10,7 +10,7 @@ export const PlayerSelectContainer = ({
     setPlayerMessage
     }) => {
 
-    if (pickStartPlayWin === 0) {
+    if (pickStartPlayWin === 0 || pickStartPlayWin === 1) {
         return (
             <PlayerSelect 
                 setPickStartPlayWin={setPickStartPlayWin}

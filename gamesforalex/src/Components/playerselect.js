@@ -12,18 +12,15 @@ export const PlayerSelect = ({
     alex, jess, david, 
     setPlayerMessage
     }) => {
-    const [photo1, setPhoto1] = useState(background);
-    const [photo2, setPhoto2] = useState(background);
+    // const [photo1, setPhoto1] = useState(background);
+    // const [photo2, setPhoto2] = useState(background);
 
     const handlePlayer1Change = event => {
         if (event.target.id === 'Alex1') {
             setPlayer1(alex);
-            setPhoto1(alexPhoto);
         } else if (event.target.id === 'Jess1') {
-            setPhoto1(jessPhoto);
             setPlayer1(jess);
         } else if (event.target.id === 'David1') {
-            setPhoto1(davidPhoto);
             setPlayer1(david);
         }
     }
@@ -31,16 +28,13 @@ export const PlayerSelect = ({
     const handlePlayer2Change = event => {
         if (event.target.id === 'Alex2') {
             setPlayer2(alex);
-            setPhoto2(alexPhoto);
         } else if (event.target.id === 'Jess2') {
-            setPhoto2(jessPhoto);
             setPlayer2(jess);
         } else if (event.target.id === 'David2') {
-            setPhoto2(davidPhoto);
             setPlayer2(david);
         }
     }
-    
+
     const handleClick = () => {
         if (player1 === 'Select Player 1' || player2 === 'Select Player 2') {
             setPlayerMessage('Select Both Players')
@@ -49,9 +43,9 @@ export const PlayerSelect = ({
             setPlayerMessage('Select Two Different Players')
             return
         } else {
-            setPickStartPlayWin(1)
+            // setPickStartPlayWin(1);
+            return
         }
-        
     }
     
         
@@ -59,8 +53,8 @@ export const PlayerSelect = ({
             <div id="playerselect">
                 <div className="flexspacer"></div>
                 <div className="playerchoicecontainer">
-                    <h3>{player1 ? player1.name : 'Select Player'}</h3>
-                    <img id="photo1" class="playerPhoto" src={photo1} alt="player1"/>
+                    <h3>{player1 ? player1.name : 'Select Player 1'}</h3>
+                    <img id="photo1" class="playerPhoto" src={player1 ? player1.photo: background} alt="player1"/>
                     <div className="formcontainer">
                         <div className="spacer"></div>
                         <form className="playerRadio">
@@ -76,8 +70,8 @@ export const PlayerSelect = ({
                 </div>
                 <button className="submit"  type="submit" onClick={handleClick} >Play</button>
                 <div className="playerchoicecontainer">
-                    <h3>{player2 ? player2.name : 'Select Player'}</h3>
-                    <img id="photo2" class="playerPhoto" src={photo2} alt="player2"/>
+                    <h3>{player2 ? player2.name : 'Select Player 2'}</h3>
+                    <img id="photo2" class="playerPhoto" src={player2 ? player2.photo: background} alt="player2"/>
                     <div className="formcontainer">
                         <div className="spacer"></div>
                         <form className="playerRadio">
