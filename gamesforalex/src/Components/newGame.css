@@ -1,0 +1,12 @@
+#newgame {
+    text-align: center;
+    align-content: center;
+    justify-content: space-around;
+    padding: 1%;
+}
+
+button.playagain {
+    display: block;
+    margin: 1% auto;
+    padding: 1%;
+}
