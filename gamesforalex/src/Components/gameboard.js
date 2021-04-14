@@ -7,8 +7,8 @@ import jessPhoto from './jess.jpg';
 import {BoardBoxesContainer} from './boardBoxesContainer';
 
 export const GameBoard = () => {
-    const [player1, setPlayer1] = useState('Select Player 1');
-    const [player2, setPlayer2] = useState('Select Player 2')
+    const [player1, setPlayer1] = useState(null);
+    const [player2, setPlayer2] = useState(null);
     const [turnOrder] = useState([player1, player2, player1, player2, player1, player2, player1, player1, player2, player1]);
     const [turnCount, setTurnCount] = useState(Math.floor(Math.random()*2));
     const [playerMessage, setPlayerMessage] = useState('Select Players');

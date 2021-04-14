@@ -1,20 +1,16 @@
 // import { useEffect } from 'react';
 import './boardBoxes.css';
 import {Box} from './box';
-// import alex from '../alexsunglasses.jpg';
-// import david from '../david.jpg';
-// import jess from '../jess.jpg';
-// import background from '../background.jpg';
+import alex from './alexsunglasses.jpg';
+import david from './david.jpg';
+import jess from './jess.jpg';
+import background from './background.jpg';
 
 export const BoardBoxes = ({
     boardBoxesComponentState, 
     turnCount, setTurnCount, 
     turnOrder, 
     boardState, setBoardState, 
-    winner, setWinner, 
-    setGameState, 
-    currentPlayer, 
-    setFirstTurn, 
     player1, player2, 
     alex, jess, david, 
     }) => {
@@ -76,28 +72,27 @@ export const BoardBoxes = ({
 
         return (
             <div id="boardcontainer" className="section" style={{boardBoxesComponentState}}>
-                    <div className="gameboardplayercontainer">
-                        <img id="photo1" className="playerphoto" src={alex} alt="player 1" />
-                        <span className="name">{player1}</span>
-                    </div>
-                    <div id="exterior">
-                        <div id="board" >
-                            {boxNums.map(i => {
-                                return( 
-                                    <Box className="box" id={i} style={styles} 
-                                        setTurnCount={setTurnCount} 
-                                        boardState={boardState} setBoardState={setBoardState} 
-                                        currentPlayer={currentPlayer} 
-                                        setFirstTurn={setFirstTurn}/>  
-                                )
-                            })}
-                        </div>
-                    </div>
-                    <div className="gameboardplayercontainer">
-                        <img id="photo2" className="playerphoto" src={david} alt="player 2"/>
-                        <span className="name">{player2}</span>
+                <div className="gameboardplayercontainer">
+                    <img id="photo1" className="playerphoto" src={player1.photo} alt="player 1" />
+                    <span className="name">{player1}</span>
+                </div>
+                <div id="exterior">
+                    <div id="board" >
+                        {boxNums.map(i => {
+                            return( 
+                                <Box className="box" id={i} style={styles} 
+                                    setTurnCount={setTurnCount} 
+                                    boardState={boardState} setBoardState={setBoardState} 
+                                    />  
+                            )
+                        })}
                     </div>
                 </div>
+                <div className="gameboardplayercontainer">
+                    <img id="photo2" className="playerphoto" src={player2} alt="player 2"/>
+                    <span className="name">{player2}</span>
+                </div>
+            </div>
             
 
         )

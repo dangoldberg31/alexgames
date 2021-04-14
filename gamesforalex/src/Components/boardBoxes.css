@@ -4,10 +4,11 @@ div.box {
 }
 
 #boardcontainer {
-    margin: 2% auto;
+    margin: 1% auto;
     position: relative;
-    width: 100%;
-    /* display: flex; */
+    width: 50%;
+    align-content: center;
+    display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
 }

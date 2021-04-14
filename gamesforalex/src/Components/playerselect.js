@@ -10,46 +10,56 @@ export const PlayerSelect = ({
     player1, setPlayer1, 
     player2, setPlayer2, 
     alex, jess, david, 
-    setPlayerPrompt
+    setPlayerMessage
     }) => {
     const [photo1, setPhoto1] = useState(background);
     const [photo2, setPhoto2] = useState(background);
 
     const handlePlayer1Change = event => {
         if (event.target.id === 'Alex1') {
-            setPlayer1(alex.name);
+            setPlayer1(alex);
             setPhoto1(alexPhoto);
         } else if (event.target.id === 'Jess1') {
             setPhoto1(jessPhoto);
-            setPlayer1(jess.name);
+            setPlayer1(jess);
         } else if (event.target.id === 'David1') {
             setPhoto1(davidPhoto);
-            setPlayer1(david.name);
+            setPlayer1(david);
         }
     }
 
     const handlePlayer2Change = event => {
         if (event.target.id === 'Alex2') {
-            setPlayer2(alex.name);
+            setPlayer2(alex);
             setPhoto2(alexPhoto);
         } else if (event.target.id === 'Jess2') {
             setPhoto2(jessPhoto);
-            setPlayer2(jess.name);
+            setPlayer2(jess);
         } else if (event.target.id === 'David2') {
             setPhoto2(davidPhoto);
-            setPlayer2(david.name);
+            setPlayer2(david);
         }
     }
     
-    const handleFormSubmit = () => {
-        setPickStartPlayWin(1)
+    const handleClick = () => {
+        if (player1 === 'Select Player 1' || player2 === 'Select Player 2') {
+            setPlayerMessage('Select Both Players')
+            return
+        } else if (player1 === player2) {
+            setPlayerMessage('Select Two Different Players')
+            return
+        } else {
+            setPickStartPlayWin(1)
+        }
+        
     }
     
         
     return (
             <div id="playerselect">
+                <div className="flexspacer"></div>
                 <div className="playerchoicecontainer">
-                    <h3>{player1}</h3>
+                    <h3>{player1 ? player1.name : 'Select Player'}</h3>
                     <img id="photo1" class="playerPhoto" src={photo1} alt="player1"/>
                     <div className="formcontainer">
                         <div className="spacer"></div>
@@ -64,8 +74,9 @@ export const PlayerSelect = ({
                         <div className="spacer"></div>
                     </div>
                 </div>
+                <button className="submit"  type="submit" onClick={handleClick} >Play</button>
                 <div className="playerchoicecontainer">
-                    <h3>{player2}</h3>
+                    <h3>{player2 ? player2.name : 'Select Player'}</h3>
                     <img id="photo2" class="playerPhoto" src={photo2} alt="player2"/>
                     <div className="formcontainer">
                         <div className="spacer"></div>
@@ -80,12 +91,7 @@ export const PlayerSelect = ({
                         <div className="spacer"></div>
                     </div>
                 </div>
-                <br />
-                <div>
-                    <form className="start" onSubmit={handleFormSubmit}>
-                        <input className="submit"  type="submit" />
-                    </form>
-                </div>
+                <div className="flexspacer"></div>              
             </div>
         )
     }

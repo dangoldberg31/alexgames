@@ -6,7 +6,8 @@ export const PlayerSelectContainer = ({
     player1, setPlayer1, 
     player2, setPlayer2, 
     alex, jess, david,
-    pickStartPlayWin, setPickStartPlayWin
+    pickStartPlayWin, setPickStartPlayWin,
+    setPlayerMessage
     }) => {
 
     if (pickStartPlayWin === 0) {
@@ -17,7 +18,8 @@ export const PlayerSelectContainer = ({
                 player2={player2} setPlayer2={setPlayer2} 
                 alex={alex} 
                 jess={jess} 
-                david={david}  />
+                david={david} 
+                setPlayerMessage={setPlayerMessage} />
         )   
     } else {
         return null;
