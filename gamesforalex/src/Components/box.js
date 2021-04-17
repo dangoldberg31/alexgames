@@ -1,46 +1,56 @@
-import alex from './alexsunglasses.jpg';
-import david from './david.jpg';
-import jess from './jess.jpg';
+import alexPhoto from './alexsunglasses.jpg';
+import davidPhoto from './david.jpg';
+import jessPhoto from './jess.jpg';
 import background from './background.jpg';
 import './boxComponent.css';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 export const Box = ({
     styles, id, 
-    currentPlayer, 
-    setTurnCount, 
-    setFirstTurn, 
-    boardState, setBoardValues, 
-    state, 
+    turnCount, setTurnCount, 
+    turnOrder,
+    boardState, setBoardState, 
+    player1, player2,
+    currentPlayer,
+    endState
 }) => {
-    // const [state, setState] = useState(null);
-    const [image, setImage] = useState(background);  
         
+    const [boxAssign, setBoxAssign] = useState('free');
+    const [boxPhoto, setBoxPhoto] = useState(background);
+
+    // useEffect(() => {
+    //     if ( endState === true)    
+    // })
+
     const handleClick = (event) => {
-        // if (boardValues[id] !== null) {
-        //     return;
+        if (boxAssign !== 'free') {
+            return;
+        }
+        setBoxAssign(currentPlayer.name);
+        setBoxPhoto(currentPlayer.photo)
+        let boardArray = boardState;
+        boardArray[id] = turnOrder[turnCount];
+        setBoardState(boardArray)
+
+            // if (turnOrder[turnCount] === "Alex") {
+            //     setImage(alex);
+            // } else if (currentPlayer === "David") {
+            //     setImage(david);
+            // } else if (currentPlayer === "Jess") {
+            //     setImage(jess);
+            // }
+
+            setTurnCount((prev) => prev+1)
         // }
-        // let boardArray = boardValues;
-        // boardArray[id] = currentPlayer;
-        // setBoardValues(boardArray)
-        // setFirstTurn(false);
-        // if (currentPlayer === "Alex") {
-        //     setImage(alex);
-        // } else if (currentPlayer === "David") {
-        //     setImage(david);
-        // } else if (currentPlayer === "Jess") {
-        //     setImage(jess);
-        // }
-        // setTurnCount((prev) => prev+1)
 }
   
     return (
             <div>
-                <img className="box" style={styles}
+                <img className="box" 
                     id={id}  
-                    state = {boardState[id]} 
+                    name = {boxAssign} 
                     onClick={handleClick}  
-                    src={image}
+                    src = {boxPhoto}
                      alt="box" />
             </div>
     )

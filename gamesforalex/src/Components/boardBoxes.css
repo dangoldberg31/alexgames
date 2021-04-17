@@ -5,21 +5,28 @@ div.box {
 
 #boardcontainer {
     margin: 1% auto;
-    position: relative;
-    width: 50%;
+    width: 60%;
     align-content: center;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
 }
 
-div.gameboardplayercontainer {
+.gameboardplayercontainer {
     width: 1fr;
-    flex-basis: 1fr;
+    margin: 20px;
+    display: block;
+    align-content: center;
+}
+
+span {
+    text-align: center;
 }
 
 #exterior {
-    display: inline-block;
+    width: 5fr;
+    margin: 2%;
+    display: block;
 }
 
 #board {

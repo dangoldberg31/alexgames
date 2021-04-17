@@ -2,23 +2,30 @@ import {BoardBoxes} from './boardBoxes';
 
 export const BoardBoxesContainer = ({
     pickStartPlayWin, setPickStartPlayWin,
+    boardDisplay,
     turnCount, setTurnCount, 
     turnOrder, 
     boardState, setBoardState, 
     setPlayerMessage, 
-    setAlex, alex, jess, setJess, david, setDavid
+    player1, player2,
+    currentPlayer,
+    endState
     }) => {
-    
-    if (pickStartPlayWin === 1) {
+
+    if (boardDisplay === true) {
         return (
-            <BoardBoxes 
-                alex={alex} setAlex={setAlex} jess={jess} setjess={setJess} david={david} setDavid={setDavid} 
+            <div> 
+                <BoardBoxes 
                 turnOrder={turnOrder} turnCount={turnCount} setTurnCount={setTurnCount} 
                 boardState={boardState} setBoardState={setBoardState} 
                 setPlayerMessage={setPlayerMessage} 
+                player1={player1} player2={player2}
+                currentPlayer={currentPlayer}
+                endState={endState}   
                 />
+            </div>
         )
     } else {
-            return null;
-        }
+        return null;
+    }
 }

@@ -3,23 +3,25 @@ import './playerselect.css';
 import {PlayerSelect} from './playerselect'
 
 export const PlayerSelectContainer = ({
+    boardDisplay, setBoardDisplay,
     player1, setPlayer1, 
     player2, setPlayer2, 
-    alex, jess, david,
-    pickStartPlayWin, setPickStartPlayWin,
-    setPlayerMessage
+    setTurnOrder,
+    turnCount,
+    setPlayerMessage,
+    playerSelectDisplay, setPlayerSelectDisplay
     }) => {
 
-    if (pickStartPlayWin === 0 || pickStartPlayWin === 1) {
+    if (playerSelectDisplay === true) {
         return (
             <PlayerSelect 
-                setPickStartPlayWin={setPickStartPlayWin}
+                boardDisplay={boardDisplay} setBoardDisplay={setBoardDisplay}    
                 player1={player1} setPlayer1={setPlayer1} 
                 player2={player2} setPlayer2={setPlayer2} 
-                alex={alex} 
-                jess={jess} 
-                david={david} 
-                setPlayerMessage={setPlayerMessage} />
+                setPlayerSelectDisplay={setPlayerSelectDisplay}
+                setPlayerMessage={setPlayerMessage} 
+                turnCount={turnCount}
+                setTurnOrder={setTurnOrder}/>
         )   
     } else {
         return null;
