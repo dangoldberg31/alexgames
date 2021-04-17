@@ -13,19 +13,13 @@ export const GameBoard = () => {
     const [boardDisplay, setBoardDisplay] = useState(false);
     const [boardState, setBoardState] = useState(Array(9).fill(null));
     const [currentPlayer, setCurrentPlayer] = useState(null);
-    const [endState, setEndState] = useState(false);
+    // const [endState, setEndState] = useState(false);
 
     useEffect(() => {
         setCurrentPlayer(turnOrder[turnCount])
     }, [turnCount, turnOrder])
 
-    useEffect(() => {
-        let winner = checkForWinner()
-        if (winner === false) {
-            return;
-        }
-        setPlayerMessage(`${winner} wins!`)
-    }, [turnCount, currentPlayer])
+
 
     // useEffect(() => {
     //     if (currentPlayer !== false) {
@@ -55,6 +49,14 @@ export const GameBoard = () => {
             return false;
         }
     }
+
+    useEffect(() => {
+        let winner = checkForWinner()
+        if (winner === false) {
+            return;
+        }
+        setPlayerMessage(`${winner} wins!`)
+    }, [turnCount, currentPlayer, checkForWinner])
 
 //     const endGame = () => {
 //         setTimeout(() => setBoardState[0]image(photo),1000);
@@ -91,7 +93,7 @@ export const GameBoard = () => {
                 turnOrder={turnOrder} 
                 turnCount={turnCount} setTurnCount={setTurnCount}  
                 currentPlayer={currentPlayer}     
-                endState={endState}            
+                // endState={endState}            
                 />
         </div>
     )

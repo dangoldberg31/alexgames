@@ -1,9 +1,9 @@
-import alexPhoto from './alexsunglasses.jpg';
-import davidPhoto from './david.jpg';
-import jessPhoto from './jess.jpg';
+// import alexPhoto from './alexsunglasses.jpg';
+// import davidPhoto from './david.jpg';
+// import jessPhoto from './jess.jpg';
 import background from './background.jpg';
 import './boxComponent.css';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 
 export const Box = ({
     styles, id, 
