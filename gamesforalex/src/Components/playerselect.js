@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+// import {useEffect} from 'react';
 import './playerselect.css';
 import alexPhoto from './alexsunglasses.jpg';
 import davidPhoto from './david.jpg';
@@ -78,7 +78,6 @@ export const PlayerSelect = ({
         }
     }
     
-
     const advance = () => {
         let order = setOrder()            
         setTurnOrder(order)
