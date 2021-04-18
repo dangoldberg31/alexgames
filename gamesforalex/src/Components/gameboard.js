@@ -14,19 +14,8 @@ export const GameBoard = () => {
     const [boardState, setBoardState] = useState(Array(9).fill(null));
     const [currentPlayer, setCurrentPlayer] = useState(null);
     // const [endState, setEndState] = useState(false);
+    
 
-    useEffect(() => {
-        setCurrentPlayer(turnOrder[turnCount])
-    }, [turnCount, turnOrder])
-
-
-
-    // useEffect(() => {
-    //     if (currentPlayer !== false) {
-    //         return
-    //     }
-    //     setPlayerMessage(`It's ${currentPlayer.name}'s turn.`)
-    // },[currentPlayer])
 
     const checkForWinner = () => {        
         if (boardState[0] !== null && boardState[0] === boardState[1] && boardState[0] === boardState[2]) {
@@ -50,13 +39,32 @@ export const GameBoard = () => {
         }
     }
 
+    const determinePrompt = () => {
+        if (playerSelectDisplay === false && checkForWinner() === false) {
+            return `It's ${turnOrder[turnCount].name}'s turn.`
+        } else {
+            return `${checkForWinner()} wins!`
+        }
+    }
+
     useEffect(() => {
-        let winner = checkForWinner()
-        if (winner === false) {
+        setCurrentPlayer(turnOrder[turnCount])
+    }, [turnCount, turnOrder])
+
+    // useEffect(() => {
+    //     if (currentPlayer !== false) {
+    //         return
+    //     }
+    //     setPlayerMessage(`It's ${currentPlayer.name}'s turn.`)
+    // },[currentPlayer])
+
+    useEffect(() => {
+        if (playerSelectDisplay === true) {
             return;
         }
-        setPlayerMessage(`${winner} wins!`)
-    }, [turnCount, currentPlayer, checkForWinner])
+        let prompt = determinePrompt()
+        setPlayerMessage(prompt);
+    }, [playerSelectDisplay, checkForWinner])
 
 //     const endGame = () => {
 //         setTimeout(() => setBoardState[0]image(photo),1000);

@@ -1,4 +1,4 @@
-// import {useState} from 'react';
+import {useEffect} from 'react';
 import './playerselect.css';
 import alexPhoto from './alexsunglasses.jpg';
 import davidPhoto from './david.jpg';
@@ -68,14 +68,18 @@ export const PlayerSelect = ({
         return playerOrder;
     }  
 
-    const handleClick = event => {
+    const checkError = () => {
         if (player1 === 'Select Player 1' || player2 === 'Select Player 2') {
-            setPlayerMessage('Select Both Players')
-            return;
+            return 'Select Both Players'
         } else if (player1 === player2) {
-            setPlayerMessage('Select Two Different Players')
-            return;
+            return 'Select Two Different Players';
+        } else {
+            return false;
         }
+    }
+    
+
+    const advance = () => {
         let order = setOrder()            
         setTurnOrder(order)
         setBoardDisplay(true);
@@ -83,7 +87,14 @@ export const PlayerSelect = ({
         setPlayerMessage(`${order[turnCount].name} wins the coin toss!`)
     }
 
- 
+    const handleClick = () => {
+        if (checkError() === false) {
+            advance()
+            return;
+        }
+        setPlayerMessage(checkError());
+    }
+
         
     return (
             <div id="playerselect">

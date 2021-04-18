@@ -11,8 +11,6 @@ export const BoardBoxes = ({
     setPlayerMessage,
     endState
     }) => {
-    
-        // (`${turnOrder[turnCount]} won the coin toss!`);
 
     const boxNums = [0, 1, 2, 3, 4, 5, 6, 7, 8]; 
         
