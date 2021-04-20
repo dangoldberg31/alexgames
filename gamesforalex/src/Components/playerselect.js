@@ -3,19 +3,17 @@ import alexPhoto from './alexsunglasses.jpg';
 import davidPhoto from './david.jpg';
 import jessPhoto from './jess.jpg';
 import background from './background.jpg';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export const PlayerSelect = ({
     player1, setPlayer1, 
     player2, setPlayer2, 
-    currentPlayer,
     setPlayerMessage,
     playerSelectDisplay, setPlayerSelectDisplay,
     boardDisplay, setBoardDisplay,
     turnOrder, setTurnOrder,
     turnCount
     }) => {
-    const [test, setTest] = useState('start')
     const alex = 
         {name: 'Alex',
         photo: alexPhoto,
@@ -34,14 +32,22 @@ export const PlayerSelect = ({
         wins: 0,
         losses: 0
     };
-
-    // const errors = ['Select Both Players', 'Select Two Different Players'];
-
+    
+    // THIS MAY RENDER THROUGHTOUT THE GAME AND SCREW UP THE TURN ORDER
     useEffect(() => {
         if (player1 !== null && player2 !== null) {
-            setTurnOrder(setOrder())
+            let list = [];
+            for (let i = 5; i>0; i--) {
+                list.push(player1);
+                list.push(player2);
+            }
+            let randoCalcission = Math.floor(Math.random()*2)
+            if (randoCalcission === 0) {
+                list.shift();
+            }
+            setTurnOrder(list)
         }
-    })
+    },[player1, player2,setTurnOrder])
 
     const handlePlayer1Change = event => {
         if (event.target.id === 'Alex1') {
@@ -51,9 +57,6 @@ export const PlayerSelect = ({
         } else if (event.target.id === 'David1') {
             setPlayer1(david);
         }
-        // if (player1 !== null && player2 !== null) {
-        //     setTurnOrder(setOrder())
-        // }
     }
 
     const handlePlayer2Change = event => {
@@ -64,21 +67,13 @@ export const PlayerSelect = ({
         } else if (event.target.id === 'David2') {
             setPlayer2(david);
         }}
-    //     if (player1 !== null && player2 !== null) {
-    //         setTurnOrder(setOrder())
-    //     }
-    // }
 
     const handleClick = () => {
         if (player1 === null || player2 === null) {
             setPlayerMessage('Select Both Players')
-        // } else if (player2 === null) {
-        //     setTest('p2 is null')
         } else if (player1.name === player2.name) {
             setPlayerMessage(`Pick Two Different Players`);
         } else {
-            let order = setOrder();
-            // setTurnOrder(order);
             setPlayerMessage(`${player1.name} vs. ${player2.name} `);
             setBoardDisplay(true);
             setPlayerSelectDisplay(false)
@@ -91,34 +86,7 @@ export const PlayerSelect = ({
         }
     }
 
-    const setOrder = () => {
-        let list = [];
-        // let p1; 
-        // let p2;
-        // if (player1.name === 'Alex') {
-        //     p1 = alex;
-        // } else if (player1.name === 'David') {
-        //     p1 = david;
-        // } else if (player1.name === 'Jess') {
-        //     p1 = jess;
-        // }
-        // if (player2.name === 'Alex') {
-        //     p2 = alex;
-        // } else if (player2.name === 'David') {
-        //     p2 = david;
-        // } else if (player2.name === 'Jess') {
-        //     p2 = jess;
-        // }
-        for (let i = 5; i>0; i--) {
-            list.push(player1);
-            list.push(player2);
-        }
-        let randoCalcission = Math.floor(Math.random()*2)
-        if (randoCalcission === 0) {
-            let dump = list.shift();
-        }
-        return list;
-    }
+
         
     return (
             <div id="playerselect">
