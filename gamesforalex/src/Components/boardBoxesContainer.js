@@ -9,7 +9,9 @@ export const BoardBoxesContainer = ({
     setPlayerMessage, 
     player1, player2,
     currentPlayer,
-    endState
+    winner,
+    newGameDisplay, setNewGameDisplay,
+    cpuMove
     }) => {
 
     if (boardDisplay === true) {
@@ -21,7 +23,9 @@ export const BoardBoxesContainer = ({
                 setPlayerMessage={setPlayerMessage} 
                 player1={player1} player2={player2}
                 currentPlayer={currentPlayer}
-                endState={endState}   
+                winner={winner}
+                newGameDisplay={newGameDisplay} setNewGameDisplay={setNewGameDisplay}
+                cpuMove={cpuMove}
                 />
             </div>
         )

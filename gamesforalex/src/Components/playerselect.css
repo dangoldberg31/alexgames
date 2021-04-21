@@ -5,7 +5,6 @@
     text-align: center;
     width: 100%;
     margin: 0%;
-
 }
 
 .flexspacer {
@@ -23,11 +22,6 @@ div.playerchoicecontainer {
     border-radius: 15px;
 }
 
-.submit {
-    font-size: 1.2em;
-    margin-top: 5%;
-}
-
 form.playerRadio {
     padding: 3%;
     width: 80%;
@@ -42,18 +36,19 @@ form.start {
     padding: 0%;
 }
 
-button {
+button.submit {
     padding: .5% 1%;
     text-align: center;
     border-radius: 15px;
     background-color:  hsl(206, 50%, 50%);
     font-weight: 700;
     margin: 0;
-    font-size: 5rem;
+    font-size: 1.2em;
     font-family: Nunito;
     display: inline-block;
     height: 15%;
     font-weight: 600;
+    margin-top: 5%;
 }
 
 h3 {
@@ -69,10 +64,6 @@ h3 {
     text-align: center;
     width: 80%;
 
-  }
-
-  #playerMessage {
-    font-size: 2rem;
   }
 
   .playerPhoto {
@@ -104,3 +95,159 @@ h3 {
       width: 25%;
       display: inline-block;
     }
+
+@media only screen and (max-width: 500px) {
+    #playerselect {
+        text-align: center;
+        width:100%;
+        margin: 0% auto;
+        display: grid;
+        grid-template-rows: 3;
+        grid-template-columns: 1;
+        align-content: center;
+        align-items: center;
+    }
+    
+    .flexspacer {
+        display: none;
+    }
+
+    div.playerchoicecontainer {
+        width: 93%;
+    }
+
+    #playerchoice1 {
+        grid-area: 1 / span 1;
+    }
+
+    #playerchoice2 {
+        grid-area: 3 / span 1;
+    }
+
+    button.submit {
+        padding: .5% 1%;
+        text-align: center;
+        border-radius: 15px;
+        background-color:  hsl(206, 50%, 50%);
+        font-weight: 700;
+        margin: 10px auto;
+        font-size: 1.2em;
+        font-family: Nunito;
+        display: block;
+        min-height: 40px;
+        font-weight: 600;
+        grid-area: 2 / span 1;
+    }
+
+    .playerPhoto {
+        width: 40%;
+        margin: 1% auto;
+        display: block;
+
+    }
+
+    h3 {
+        font-size: 1rem;
+        display: block;
+    }
+    
+    div.formcontainer {
+        display: block;
+        width: 100%;
+    }
+
+    form.playerRadio {
+        max-width: 30%;
+        font-size: .8rem;
+        text-align: center;
+        display: flex;
+        align-content: space-around;
+    }
+
+    input.radiobutton {
+        display: inline-block;
+        margin-left: 22%;
+    }
+}
+
+@media only screen  and (max-width: 900px) {
+    #playerselect {
+        text-align: center;
+        width:100%;
+        margin: 0% auto;
+        display: flex;
+        align-content: space-between;
+        align-items: center;
+    }
+    
+    .flexspacer {
+        display: none;
+    }
+
+    div.playerchoicecontainer {
+        width: 40%;
+        display: inline-block;
+    }
+
+    #playerchoice1 {
+
+    }
+
+    #playerchoice2 {
+ 
+    }
+
+    button.submit {
+        padding: .5% 1%;
+        text-align: center;
+        border-radius: 15px;
+        background-color:  hsl(206, 50%, 50%);
+        font-weight: 700;
+        margin: 0x auto;
+        font-size: 1.2em;
+        font-family: Nunito;
+        display: inline-block;
+
+        font-weight: 600;
+    }
+
+    .playerPhoto {
+        margin: 1% auto;
+        display: block;
+    }
+
+    h3 {
+        font-size: 1rem;
+        display: block;
+    }
+    
+    div.formcontainer {
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    form.playerRadio {
+        width: 100%;
+        font-size: .8rem;
+        text-align: center;
+        display: flex;
+        align-content: space-around;
+        padding: 0;
+        margin: 0;
+        height: fit-content;
+    }
+
+    input.radiobutton {
+        display: inline-block;
+        font-size: 1rem;
+        padding: 0;
+        margin: 3%;
+    }
+
+    label {
+        margin: 0;
+        margin-right: 8%;
+    }
+}

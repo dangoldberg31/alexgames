@@ -3,6 +3,7 @@ import alexPhoto from './alexsunglasses.jpg';
 import davidPhoto from './david.jpg';
 import jessPhoto from './jess.jpg';
 import background from './background.jpg';
+import computerPhoto from './computer.jpg';
 import { useEffect } from 'react';
 
 export const PlayerSelect = ({
@@ -32,18 +33,25 @@ export const PlayerSelect = ({
         wins: 0,
         losses: 0
     };
+    const computer = 
+        {name: 'Computer',
+        photo: computerPhoto,
+        wins: 0,
+        losses: 0
+    };
     
-    // THIS MAY RENDER THROUGHTOUT THE GAME AND SCREW UP THE TURN ORDER
     useEffect(() => {
         if (player1 !== null && player2 !== null) {
             let list = [];
+            let shuffledVal;
             for (let i = 5; i>0; i--) {
                 list.push(player1);
                 list.push(player2);
             }
             let randoCalcission = Math.floor(Math.random()*2)
             if (randoCalcission === 0) {
-                list.shift();
+                shuffledVal = list.shift();
+                list.push(shuffledVal)
             }
             setTurnOrder(list)
         }
@@ -66,6 +74,8 @@ export const PlayerSelect = ({
             setPlayer2(jess);
         } else if (event.target.id === 'David2') {
             setPlayer2(david);
+        } else if (event.target.id === 'Computer2') {
+            setPlayer2(computer);
         }}
 
     const handleClick = () => {
@@ -92,35 +102,37 @@ export const PlayerSelect = ({
             <div id="playerselect">
                 {/* <p>{turnOrder[turnCount] ? turnOrder : 'null'}</p> */}
                 <div className="flexspacer"></div>
-                <div className="playerchoicecontainer">
+                <div className="playerchoicecontainer" id="playerchoice1">
                     <h3>{player1 ? player1.name : 'Select Player 1'}</h3>
                     <img id="photo1" class="playerPhoto" src={player1 ? player1.photo: background} alt="player1"/>
                     <div className="formcontainer">
                         <div className="spacer"></div>
                         <form className="playerRadio">
-                            <input id="Alex1" name="player1" type="radio"  onClick={handlePlayer1Change}  />
+                            <input id="Alex1" name="player1" type="radio"  className="radiobutton" onClick={handlePlayer1Change}  />
                             <label>Alex</label><br/>
-                            <input id="David1" name="player1" type="radio"  onClick={handlePlayer1Change} />
+                            <input id="David1" name="player1" type="radio"  className="radiobutton" onClick={handlePlayer1Change} />
                             <label>David</label><br/>
-                            <input id="Jess1" name="player1" type="radio"  onClick={handlePlayer1Change} />
+                            <input id="Jess1" name="player1" type="radio" className="radiobutton" onClick={handlePlayer1Change} />
                             <label>Jess</label><br/>
                         </form>
                         <div className="spacer"></div>
                     </div>
                 </div>
                 <button className="submit" onClick={handleClick} >Play!</button>
-                <div className="playerchoicecontainer">
+                <div className="playerchoicecontainer" id="playerchoice2">
                     <h3>{player2 ? player2.name : 'Select Player 2'}</h3>
                     <img id="photo2" class="playerPhoto" src={player2 ? player2.photo: background} alt="player2"/>
                     <div className="formcontainer">
                         <div className="spacer"></div>
                         <form className="playerRadio">
-                            <input id="Alex2" name="player2" type="radio" value={alex} onClick={handlePlayer2Change} />
+                            <input id="Alex2" name="player2" type="radio" className="radiobutton" onClick={handlePlayer2Change} />
                             <label>Alex</label><br/>
-                            <input id="David2" name="player2" type="radio" value={david} onClick={handlePlayer2Change} />
+                            <input id="David2" name="player2" type="radio" className="radiobutton" onClick={handlePlayer2Change} />
                             <label>David</label><br/>
-                            <input id="Jess2" name="player2" type="radio" value={jess} onClick={handlePlayer2Change} />
+                            <input id="Jess2" name="player2" type="radio" className="radiobutton" onClick={handlePlayer2Change} />
                             <label>Jess</label><br/>
+                            <input id="Computer2" name="player2" type="radio" className="radiobutton" onClick={handlePlayer2Change} />
+                            <label>Computer</label><br/>
                         </form>
                         <div className="spacer"></div>
                     </div>

@@ -15,41 +15,212 @@ div.box {
 .gameboardplayercontainer {
     width: 1fr;
     margin: 20px;
-    display: block;
+    display: inline-block;
     align-content: center;
 }
 
-span {
+#cpucomment {
+    background-color: white;
     text-align: center;
+    border-radius: 25px;
+    padding: 2%;
+    width: 162px;
+}
+
+.comment {
+    font-size: 1.2rem;
+    padding: 2%;
+    margin: 2%;
+    width: 162px;
+}
+
+span.name {
+    text-align: center;
+    display: block;
+    font-size: 1.3rem;
+    font-family: 'bebas neue';
+}
+
+span.record {
+    text-align: center;
+    display: block;
+    font-size: 1.3rem;
+    font-family: 'bebas neue';
 }
 
 #exterior {
     width: 5fr;
     margin: 2%;
+    padding: 0;
     display: block;
+}
+
+.playerphoto {
+    border-radius: 10px;
 }
 
 #board {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    gap: 3%;
+    gap: 10px;
     background-color: hsl(206, 50%, 50%);
-    border: black solid 1px;
+    /* border: black solid 1px; */
     align-content: center;
     text-align: center;
-    padding: 4%;
+    padding: 10px;
     margin: 0%;
     border-radius: 15px;
-    width: 103%;
+    width: 100%;
     height: 100%;
   }
 
-  img.box {
-    text-align: center;
-    font-size: 4em;
-    line-height: .9em;
-    background-color: hsl(206, 50%, 80%);
-    width: 162px !important;
-    height: 162px !important;
+div.coincontainer {
+    width: 100%;
+    align-content: center;
+}
+
+div.coinspacer {
+    width: 30%;
+    display: inline-block;
+}
+
+ img.spinningcoin {
+     background-color: hsl(206, 50%, 80%);
+     width: 40%;
+     align-self: center;
+     margin: 0% auto;
+     padding: 2%;
+     text-align: center;
+     align-content: center;
+     display: inline-block;
+ }
+
+ @media only screen and (max-width: 500px) {
+    #boardcontainer {
+        margin: 0 auto;
+        width: 100%;
+        align-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    #board {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 1%;
+        background-color: hsl(206, 50%, 50%);
+        align-content: center;
+        text-align: center;
+        padding: 1%;
+        margin: 0%;
+        border-radius: 15px;
+        width: 100%;
+      }
+
+      .box {
+        max-width: 100%;
+    }
+
+    img.playerphoto {
+        width: 35%;
+        padding: 0;
+        display: inline-block;
+        margin: 0 2%;
+    }
+
+    span.name {
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+
+    div.gameboardplayercontainer {
+        display: flex;
+        width: 65%;
+        margin: 2%;
+        align-content: space-around;
+        align-items: center;
+    }
+
+    div.coincontainer {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    div.coinspacer {
+        display: none;
+    }
+  }
+
+  @media only screen and (max-width: 900px) {
+    #boardcontainer {
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    #board {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 1%;
+        background-color: hsl(206, 50%, 50%);
+        align-content: center;
+        text-align: center;
+        padding: 1%;
+        margin: 0%;
+        border-radius: 15px;
+        width: 100%;
+      }
+
+      .box {
+        max-width: 100%;
+    }
+
+    img.playerphoto {
+        width: 25%;
+        padding: 0;
+        display: inline-block;
+        margin: 0 2%;
+    }
+
+    span.name {
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+
+    #exterior {
+        order: 3;
+    }
+
+    #boardplayer1 {
+        order: 1;
+        margin-left: 10%;
+    }
+
+    #boardplayer2 {
+        order: 2;
+        margin-right: 10%;
+    }
+
+    div.gameboardplayercontainer {
+        display: flex;
+        width: 30%;
+        margin: 2% 2%;
+        align-content: space-around;
+        align-items: center;
+    }
+
+    div.coincontainer {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    div.coinspacer {
+        display: none;
+    }
   }
