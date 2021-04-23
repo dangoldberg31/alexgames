@@ -15,7 +15,10 @@ export const GameBoard = () => {
     const [newGameDisplay, setNewGameDisplay] = useState(false);
     const [boardState, setBoardState] = useState(Array(9).fill(0));
     const [winner, setWinner] = useState(false);  
-    const [cpuMove, setCpuMove] = useState(null)
+    const [cpuMove, setCpuMove] = useState(null);
+    const [sliderValue, setSliderValue] = useState(10);
+    // eslint-disable-next-line no-unused-vars
+    const [cpuBackupToggle, setCPUBackupToggle] = useState(0);
 
     const row1 = [ boardState[0], boardState[1], boardState[2] ];
     const row2 = [ boardState[3], boardState[4], boardState[5] ];
@@ -25,6 +28,7 @@ export const GameBoard = () => {
     const col3 = [ boardState[2], boardState[5], boardState[8] ];
     const dia1 = [ boardState[0], boardState[4], boardState[8] ];
     const dia2 = [ boardState[2], boardState[4], boardState[6] ];
+    
 
     const reduceFunc = (total, num) => {
         return total + num;
@@ -257,8 +261,11 @@ export const GameBoard = () => {
             let winCheck = cpuWinChecker();
             let loseCheck = cpuLoseChecker();
             let simpleMove = cpuSimpleMove();
+            let IQ = Math.floor(Math.random()*10)
             setTimeout(() => {
                 if (winCheck === false && loseCheck === false) {
+                    setCpuMove(simpleMove);
+                } else if (IQ >= sliderValue) {
                     setCpuMove(simpleMove);
                 } else if (winCheck === false) {
                     setCpuMove(loseCheck);
@@ -305,6 +312,8 @@ export const GameBoard = () => {
                 winner={winner}    
                 newGameDisplay={newGameDisplay} setNewGameDisplay={setNewGameDisplay}
                 cpuMove={cpuMove}
+                sliderValue={sliderValue} setSliderValue={setSliderValue}
+                setCPUBackupToggle={setCPUBackupToggle}
                 />
 
         </div>
