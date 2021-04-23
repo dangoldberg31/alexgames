@@ -172,6 +172,15 @@ export const GameBoard = () => {
                 defenseMoves.push(8);
             }
         } 
+        if (Math.abs(dia1.reduce(reduceFunc) - cpuVal) === 3) {
+            if (boardState[0] === 0) {
+                defenseMoves.push(0);
+            } else if (boardState[4] === 0) {
+                defenseMoves.push(4);
+            } else if (boardState[8] === 0) {
+                defenseMoves.push(8);
+            }
+        } 
         if (Math.abs(dia2.reduce(reduceFunc) - cpuVal) === 3) {
             if (boardState[2] === 0) {
                 defenseMoves.push(2);
@@ -236,7 +245,9 @@ export const GameBoard = () => {
             setTimeout(() => {
                 setNewGameDisplay(true)
             },1500)
-                }
+        } else {
+            return
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[turnCount])
 
